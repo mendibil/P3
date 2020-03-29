@@ -123,7 +123,7 @@ Ejercicios básicos
    
    Todo esto viene ilustrado en la siguiente imagen:
    
-   <img src="img/P3-ilustracio-probabilitats.jpeg" align="center">
+   <img src="img/ejemplo.png" align="center">
    
    Así pues, nuestra regla de decisión queda de la siguiente manera:
    
@@ -283,6 +283,12 @@ Ejercicios de ampliación
   ### Técnica de preprocesado: *center clipping*
   
   Hemos optado por el _**center clipping**_ para realizar el preprocesado de la señal ya que es una técnica simple pero a la vez muy efectiva. Es un proceso no lineal que conserva la estructura periódica de la señal a la vez que intensifica la estructura armónica y reduce el ruido.
+  
+  Ejemplo visual del resultado de aplicar _center clipping_ a un sonido sonoro:
+  
+  <img src="img/cc2.png" align="center">
+  <img src="img/cc1.png" align="center">
+  
   
   Para optimizarlo hemos establecido un offset para las muestras positivas y otro para las negativas. El valor de este offset es el resutado de multiplicar la potencia media de todo el fichero de audio por un porcentaje. Este porcentaje es decisivo para obtener un buen resultado y por eso los hemos utilizado junto a la librería `docopt_cpp` para iterar diferentes posibilidades así pudiendo obtener los valores óptimos. Aunque no es lo habitual, optimizando los valores hemos llegado a thresholds diferentes para la parte positiva y para la parte negativa. También provamos de implementar la versión sin _offset_ pero los resultados no eran tan buenos:
   
