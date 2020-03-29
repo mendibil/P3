@@ -1,0 +1,7 @@
+[options]
+prefix = /Users/davidbonet/Desktop/p3-priv
+libdir = lib
+buildtype = release
+
+[properties]
+

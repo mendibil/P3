@@ -1,5 +1,5 @@
 # PREFIX sets the 'prefix' option of Meson's project() on 'ninja install'.
-PREFIX = ${HOME}/PAV
+PREFIX = ${PWD} # PREFIX = ${HOME}/Desktop/p3-priv
 
 BUILD_RELEASE = build/release
 BUILD_DEBUG   = build/debug

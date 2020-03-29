@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classdocopt_1_1Pattern.html" title=" " alt="" coords="5,153,117,179"/>
+<area shape="rect" id="node2" href="$classdocopt_1_1BranchPattern.html" title=" " alt="" coords="165,104,319,129"/>
+<area shape="rect" id="node8" href="$classdocopt_1_1LeafPattern.html" title=" " alt="" coords="173,203,311,228"/>
+<area shape="rect" id="node3" href="$classdocopt_1_1Either.html" title=" " alt="" coords="385,5,488,31"/>
+<area shape="rect" id="node4" href="$classdocopt_1_1OneOrMore.html" title=" " alt="" coords="367,55,506,80"/>
+<area shape="rect" id="node5" href="$classdocopt_1_1Optional.html" title=" " alt="" coords="377,104,496,129"/>
+<area shape="rect" id="node7" href="$classdocopt_1_1Required.html" title=" " alt="" coords="375,153,498,179"/>
+<area shape="rect" id="node6" href="$classdocopt_1_1OptionsShortcut.html" title=" " alt="" coords="554,104,719,129"/>
+<area shape="rect" id="node9" href="$classdocopt_1_1Argument.html" title=" " alt="" coords="373,203,500,228"/>
+<area shape="rect" id="node11" href="$classdocopt_1_1Option.html" title=" " alt="" coords="383,252,491,277"/>
+<area shape="rect" id="node10" href="$classdocopt_1_1Command.html" title=" " alt="" coords="571,203,702,228"/>
+</map>

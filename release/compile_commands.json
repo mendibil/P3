@@ -1,0 +1,50 @@
+[
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/pav/c0b918b@@pav@sta -Isrc/pav -I../../src/pav -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pav/c0b918b@@pav@sta/digital_filter.cpp.o' -MF 'src/pav/c0b918b@@pav@sta/digital_filter.cpp.o.d' -o 'src/pav/c0b918b@@pav@sta/digital_filter.cpp.o' -c ../../src/pav/digital_filter.cpp",
+    "file": "../../src/pav/digital_filter.cpp",
+    "output": "src/pav/c0b918b@@pav@sta/digital_filter.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/pav/c0b918b@@pav@sta -Isrc/pav -I../../src/pav -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pav/c0b918b@@pav@sta/filename.cpp.o' -MF 'src/pav/c0b918b@@pav@sta/filename.cpp.o.d' -o 'src/pav/c0b918b@@pav@sta/filename.cpp.o' -c ../../src/pav/filename.cpp",
+    "file": "../../src/pav/filename.cpp",
+    "output": "src/pav/c0b918b@@pav@sta/filename.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/pav/c0b918b@@pav@sta -Isrc/pav -I../../src/pav -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pav/c0b918b@@pav@sta/keyvalue.cpp.o' -MF 'src/pav/c0b918b@@pav@sta/keyvalue.cpp.o.d' -o 'src/pav/c0b918b@@pav@sta/keyvalue.cpp.o' -c ../../src/pav/keyvalue.cpp",
+    "file": "../../src/pav/keyvalue.cpp",
+    "output": "src/pav/c0b918b@@pav@sta/keyvalue.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/pav/c0b918b@@pav@sta -Isrc/pav -I../../src/pav -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pav/c0b918b@@pav@sta/wavfile_mono.cpp.o' -MF 'src/pav/c0b918b@@pav@sta/wavfile_mono.cpp.o.d' -o 'src/pav/c0b918b@@pav@sta/wavfile_mono.cpp.o' -c ../../src/pav/wavfile_mono.cpp",
+    "file": "../../src/pav/wavfile_mono.cpp",
+    "output": "src/pav/c0b918b@@pav@sta/wavfile_mono.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/pav/c0b918b@@pav@sta -Isrc/pav -I../../src/pav -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/pav/c0b918b@@pav@sta/docopt_cpp_docopt.cpp.o' -MF 'src/pav/c0b918b@@pav@sta/docopt_cpp_docopt.cpp.o.d' -o 'src/pav/c0b918b@@pav@sta/docopt_cpp_docopt.cpp.o' -c ../../src/pav/docopt_cpp/docopt.cpp",
+    "file": "../../src/pav/docopt_cpp/docopt.cpp",
+    "output": "src/pav/c0b918b@@pav@sta/docopt_cpp_docopt.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/get_pitch/6ead077@@get_pitch@exe -Isrc/get_pitch -I../../src/get_pitch -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/get_pitch/6ead077@@get_pitch@exe/get_pitch.cpp.o' -MF 'src/get_pitch/6ead077@@get_pitch@exe/get_pitch.cpp.o.d' -o 'src/get_pitch/6ead077@@get_pitch@exe/get_pitch.cpp.o' -c ../../src/get_pitch/get_pitch.cpp",
+    "file": "../../src/get_pitch/get_pitch.cpp",
+    "output": "src/get_pitch/6ead077@@get_pitch@exe/get_pitch.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/get_pitch/6ead077@@get_pitch@exe -Isrc/get_pitch -I../../src/get_pitch -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/get_pitch/6ead077@@get_pitch@exe/pitch_analyzer.cpp.o' -MF 'src/get_pitch/6ead077@@get_pitch@exe/pitch_analyzer.cpp.o.d' -o 'src/get_pitch/6ead077@@get_pitch@exe/pitch_analyzer.cpp.o' -c ../../src/get_pitch/pitch_analyzer.cpp",
+    "file": "../../src/get_pitch/pitch_analyzer.cpp",
+    "output": "src/get_pitch/6ead077@@get_pitch@exe/pitch_analyzer.cpp.o"
+  },
+  {
+    "directory": "/Users/davidbonet/Desktop/p3-priv/build/release",
+    "command": "c++ -Isrc/get_pitch/6ead077@@pitch_evaluate@exe -Isrc/get_pitch -I../../src/get_pitch -I../../src/include -I../../src/pav/docopt_cpp -Xclang -fcolor-diagnostics -pipe -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -O3 -MD -MQ 'src/get_pitch/6ead077@@pitch_evaluate@exe/pitch_evaluate.cpp.o' -MF 'src/get_pitch/6ead077@@pitch_evaluate@exe/pitch_evaluate.cpp.o.d' -o 'src/get_pitch/6ead077@@pitch_evaluate@exe/pitch_evaluate.cpp.o' -c ../../src/get_pitch/pitch_evaluate.cpp",
+    "file": "../../src/get_pitch/pitch_evaluate.cpp",
+    "output": "src/get_pitch/6ead077@@pitch_evaluate@exe/pitch_evaluate.cpp.o"
+  }
+]

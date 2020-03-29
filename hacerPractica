@@ -1,0 +1,3 @@
+make release
+bin/run_get_pitch
+bin/pitch_evaluate pitch_db/train/*f0ref

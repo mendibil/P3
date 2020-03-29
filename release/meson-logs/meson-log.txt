@@ -1,0 +1,75 @@
+Build started at 2020-03-28T01:06:08.956196
+Main binary: /usr/local/opt/python/bin/python3.7
+Build Options: -Dprefix=/Users/davidbonet/Desktop/p3-priv -Dlibdir=lib -Dbuildtype=release
+Python system: Darwin
+The Meson build system
+Version: 0.53.2
+Source dir: /Users/davidbonet/Desktop/p3-priv
+Build dir: /Users/davidbonet/Desktop/p3-priv/build/release
+Build type: native build
+Project name: Práctica 3 de PAV - detección de pitch
+Project version: v2.0
+No CXXFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C++ compiler: c++
+Is cross compiler: False.
+Sanity check compiler command line: c++ /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.cc -o /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.exe -pipe
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.exe
+C++ compiler for the build machine: c++ (clang 10.0.1 "Apple LLVM version 10.0.1 (clang-1001.0.46.4)")
+C++ linker for the build machine: c++ ld64 450.3
+No CXXFLAGS in the environment, not changing global flags.
+No LDFLAGS in the environment, not changing global flags.
+No CPPFLAGS in the environment, not changing global flags.
+Sanity testing C++ compiler: c++
+Is cross compiler: False.
+Sanity check compiler command line: c++ /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.cc -o /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.exe -pipe
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command: /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/sanitycheckcpp.exe
+C++ compiler for the host machine: c++ (clang 10.0.1 "Apple LLVM version 10.0.1 (clang-1001.0.46.4)")
+C++ linker for the host machine: c++ ld64 450.3
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+Program doxygen found: YES (/usr/local/bin/doxygen)
+Configuring Doxyfile using configuration
+Build targets in project: 5
+
+Found ninja-1.10.0 at /usr/local/bin/ninja
+Running compile:
+Working directory:  /var/folders/6h/55n_4nl93clbwybszxsb30300000gn/T/tmpwml9iji_
+Command line:  c++ /var/folders/6h/55n_4nl93clbwybszxsb30300000gn/T/tmpwml9iji_/testfile.cpp -o /var/folders/6h/55n_4nl93clbwybszxsb30300000gn/T/tmpwml9iji_/output.obj -pipe -c -std=c++11 
+
+Code:
+ int i = static_cast<int>(0);
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Compiler accepts -std=c++11: YES
+Running compile:
+Working directory:  /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/tmpqflv1zr8
+Command line:  c++ /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/tmpqflv1zr8/testfile.cpp -o /Users/davidbonet/Desktop/p3-priv/build/release/meson-private/tmpqflv1zr8/output.obj -pipe -c -O0 -fpermissive --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ programs: =/Library/Developer/CommandLineTools/usr/bin
+libraries: =/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1
+
+Compiler stderr:
+ 

@@ -1,0 +1,59 @@
+Esta práctica se distribuye a través del repositorio Git\+Hub \href{https://github.com/albino-pav/P3}{\texttt{ Práctica 3}}. Siga las instrucciones de la \href{https://github.com/albino-pav/P2}{\texttt{ Práctica 2}} para realizar un {\ttfamily fork} de la misma y distribuir copias locales ({\itshape clones}) del mismo a los distintos integrantes del grupo de prácticas.
+
+Recuerde realizar el {\itshape pull request} al repositorio original una vez completada la práctica.\hypertarget{md__r_e_a_d_m_e_autotoc_md0}{}\doxysection{Ejercicios básicos}\label{md__r_e_a_d_m_e_autotoc_md0}
+
+\begin{DoxyItemize}
+\item Complete el código de los ficheros necesarios para realizar la detección de pitch usando el programa {\ttfamily get\+\_\+pitch}.
+\begin{DoxyItemize}
+\item Complete el cálculo de la autocorrelación e inserte a continuación el código correspondiente.
+\item Inserte una gŕafica donde, en un {\itshape subplot}, se vea con claridad la señal temporal de un sonido sonoro y su periodo de pitch; y, en otro {\itshape subplot}, se vea con claridad la autocorrelación de la señal y la posición del primer máximo secundario.
+
+N\+O\+TA\+: es más que probable que tenga que usar Python, Octave/\+M\+A\+T\+L\+AB u otro programa semejante para hacerlo. Se valorará la utilización de la librería matplotlib de Python.
+\item Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la autocorrelación. Inserte a continuación el código correspondiente.
+\item Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.
+\end{DoxyItemize}
+\item Una vez completados los puntos anteriores, dispondrá de una primera versión del detector de pitch. El resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.
+\begin{DoxyItemize}
+\item Utilice el programa {\ttfamily wavesurfer} para analizar las condiciones apropiadas para determinar si un segmento es sonoro o sordo.
+\begin{DoxyItemize}
+\item Inserte una gráfica con la detección de pitch incorporada a {\ttfamily wavesurfer} y, junto a ella, los principales candidatos para determinar la sonoridad de la voz\+: el nivel de potencia de la señal (r\mbox{[}0\mbox{]}), la autocorrelación normalizada de uno (r1norm = r\mbox{[}1\mbox{]} / r\mbox{[}0\mbox{]}) y el valor de la autocorrelación en su máximo secundario (rmaxnorm = r\mbox{[}lag\mbox{]} / r\mbox{[}0\mbox{]}).
+
+Puede considerar, también, la conveniencia de usar la tasa de cruces por cero.
+
+Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que en esta práctica es de 15 ms.
+\item Use el detector de pitch implementado en el programa {\ttfamily wavesurfer} en una señal de prueba y compare su resultado con el obtenido por la mejor versión de su propio sistema. Inserte una gráfica ilustrativa del resultado de ambos detectores.
+\end{DoxyItemize}
+\item Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error y el {\itshape score} T\+O\+T\+AL proporcionados por {\ttfamily pitch\+\_\+evaluate} en la evaluación de la base de datos {\ttfamily pitch\+\_\+db/train}..
+\begin{DoxyItemize}
+\item Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará el uso de alternativas de mayor calidad (particularmente Python).
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Ejercicios de ampliación}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Usando la librería {\ttfamily docopt\+\_\+cpp}, modifique el fichero {\ttfamily get\+\_\+pitch.\+cpp} para incorporar los parámetros del detector a los argumentos de la línea de comandos.
+
+Esta técnica le resultará especialmente útil para optimizar los parámetros del detector. Recuerde que una parte importante de la evaluación recaerá en el resultado obtenido en la detección de pitch en la base de datos.
+\begin{DoxyItemize}
+\item Inserte un {\itshape pantallazo} en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización con los argumentos añadidos.
+\end{DoxyItemize}
+\item Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de detección de pitch.
+
+Entre las posibles mejoras, puede escoger una o más de las siguientes\+:
+\begin{DoxyItemize}
+\item Técnicas de preprocesado\+: filtrado paso bajo, {\itshape center clipping}, etc.
+\item Técnicas de postprocesado\+: filtro de mediana, {\itshape dynamic time warping}, etc.
+\item Métodos alternativos a la autocorrelación\+: procesado cepstral, {\itshape average magnitude difference function} (A\+M\+DF), etc.
+\item Optimización {\bfseries{demostrable}} de los parámetros que gobiernan el detector, en concreto, de los que gobiernan la decisión sonoro/sordo.
+\item Cualquier otra técnica que se le pueda ocurrir o encuentre en la literatura.
+\end{DoxyItemize}
+
+Encontrará más información acerca de estas técnicas en las \href{https://atenea.upc.edu/pluginfile.php/2908770/mod_resource/content/3/2b_PS Techniques.pdf}{\texttt{ Transparencias del Curso}} y en \href{https://discovery.upc.edu/iii/encore/record/C__Rb1233593?lang=cat}{\texttt{ Spoken Language Processing}}. También encontrará más información en los anexos del enunciado de esta práctica.
+
+Incluya, a continuación, una explicación de las técnicas incorporadas al detector. Se valorará la inclusión de gráficas, tablas, código o cualquier otra cosa que ayude a comprender el trabajo realizado.
+
+También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de la longitud del filtro.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Evaluación $<$em$>$ciega$<$/em$>$ del detector}\label{md__r_e_a_d_m_e_autotoc_md2}
+Antes de realizar el {\itshape pull request} debe asegurarse de que su repositorio contiene los ficheros necesarios para compilar los programas correctamente ejecutando {\ttfamily make release}.
+
+Con los ejecutables construidos de esta manera, los profesores de la asignatura procederán a evaluar el detector con la parte de test de la base de datos (desconocida para los alumnos). Una parte importante de la nota de la práctica recaerá en el resultado de esta evaluación. 

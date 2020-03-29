@@ -24,3 +24,15 @@ pitch_evaluate = executable(
     link_with: lib_pav,
     install: true,
 )
+
+# Programa PSO_pitch_evaluate
+exe = 'PSO_pitch_evaluate'
+src = 'PSO_pitch_evaluate.cpp'
+
+PSO_pitch_evaluate = executable(
+    exe,
+    sources: src,
+    include_directories: inc,
+    link_with: lib_pav,
+    install: true,
+)

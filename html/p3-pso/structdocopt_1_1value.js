@@ -1,0 +1,38 @@
+var structdocopt_1_1value =
+[
+    [ "Variant", "uniondocopt_1_1value_1_1Variant.html", "uniondocopt_1_1value_1_1Variant" ],
+    [ "Kind", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024c", [
+      [ "Empty", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024cace2c8aed9c2fa0cfbed56cbda4d8bf07", null ],
+      [ "Bool", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024cac26f15e86e3de4c398a8273272aba034", null ],
+      [ "Long", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024ca8394f0347c184cf156ac5924dccb773b", null ],
+      [ "String", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024ca27118326006d3829667a400ad23d5d98", null ],
+      [ "StringList", "structdocopt_1_1value.html#a5fa8ca397c33db7449891c7805f2024cac14dea2ddb422aa8ed95360d80832b9b", null ]
+    ] ],
+    [ "value", "structdocopt_1_1value.html#ab768a11740f6c251ed6207093f6dc066", null ],
+    [ "value", "structdocopt_1_1value.html#a35d519b82e27b7fe3aa008c046420204", null ],
+    [ "value", "structdocopt_1_1value.html#a32dd6b7ac476b3a8b0a89bfb953f92dd", null ],
+    [ "value", "structdocopt_1_1value.html#ad86d6c1758e50c3d7717d182b14d87e4", null ],
+    [ "value", "structdocopt_1_1value.html#a81883678cad49edea2992cea86397c02", null ],
+    [ "value", "structdocopt_1_1value.html#a39ece19eb013dfba4df75137a8c0781d", null ],
+    [ "~value", "structdocopt_1_1value.html#a55fca58fe854096f045d3f0e302a8f1a", null ],
+    [ "value", "structdocopt_1_1value.html#ad08e1a856e3e086edeaccc3dddb94fde", null ],
+    [ "value", "structdocopt_1_1value.html#ac3710804ae623fa0e524c23524cc765c", null ],
+    [ "asBool", "structdocopt_1_1value.html#a0f73668a1c8451d7e3471b1aebd4fa3d", null ],
+    [ "asLong", "structdocopt_1_1value.html#a4b3bf11b1f06c643f62a7ce842d49282", null ],
+    [ "asString", "structdocopt_1_1value.html#a69aa7f940b1e8b3e5f8e283e80412475", null ],
+    [ "asStringList", "structdocopt_1_1value.html#af3f860f403f5c6d61eda6f7296a378c5", null ],
+    [ "hash", "structdocopt_1_1value.html#adf5870e74191ec2202bd26193147be79", null ],
+    [ "isBool", "structdocopt_1_1value.html#ad426d707f8e8297151f01813827bc3ec", null ],
+    [ "isLong", "structdocopt_1_1value.html#af6b108aae989371310be8dcf1b84837a", null ],
+    [ "isString", "structdocopt_1_1value.html#a18f3e2db1103c9a115e7c5155155b58c", null ],
+    [ "isStringList", "structdocopt_1_1value.html#af9eaafab4c25c572d14140e4fb0c38e2", null ],
+    [ "kindAsString", "structdocopt_1_1value.html#af347dc4c431ebe59cc845c64d2eb1b9a", null ],
+    [ "operator bool", "structdocopt_1_1value.html#a781bbacfa45b53aa77159b00cbb344d8", null ],
+    [ "operator=", "structdocopt_1_1value.html#ad631e7d4d8abdf0263f03c5915a1e7f9", null ],
+    [ "operator=", "structdocopt_1_1value.html#a7d4caf9cee73181e601c552d91c67c83", null ],
+    [ "throwIfNotKind", "structdocopt_1_1value.html#a7a0b5a7780ff0a9ee26ed036beee3192", null ],
+    [ "operator!=", "structdocopt_1_1value.html#a12dc6286941afe66b4a5666ef515b194", null ],
+    [ "operator==", "structdocopt_1_1value.html#a978098e745a3a42613ee4a31d6fc7a3d", null ],
+    [ "kind", "structdocopt_1_1value.html#a89f2702e7d48838935fa58c4cff475a6", null ],
+    [ "variant", "structdocopt_1_1value.html#ab3f2e836a490c6455f7ebed0a00a3d71", null ]
+];

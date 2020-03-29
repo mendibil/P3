@@ -7,8 +7,8 @@
 #include <algorithm>
 
 namespace upc {
-  const float MIN_F0 = 20.0F;    ///< Minimum value of pitch in Hertzs
-  const float MAX_F0 = 10000.0F; ///< Maximum value of pitch in Hertzs
+  const float MIN_F0 = 60.0F;    ///< Minimum value of pitch in Hertzs
+  const float MAX_F0 = 370.0F; ///< Maximum value of pitch in Hertzs
 
   ///
   /// PitchAnalyzer: class that computes the pitch (in Hz) from a signal frame.
@@ -30,6 +30,8 @@ namespace upc {
       samplingFreq, ///< sampling rate (in samples per second). Has to be set in the constructor call
       npitch_min, ///< minimum value of pitch period, in samples
       npitch_max; ///< maximum value of pitch period, in samples
+      //zeros_;
+    float probpoth_, probpotl_, probzeros_, probr1normh_, probr1norml_, probrmaxnormh_, probrmaxnorml_, probmin_, thpoth_, thpotl_, thzeros_, thr1h_, thr1l_, thrmaxh_, thrmaxl_;
  
 	///
 	/// Computes correlation from lag=0 to r.size()
@@ -42,24 +44,59 @@ namespace upc {
     float compute_pitch(std::vector<float> & x) const;
 	
 	///
-	/// Returns true is the frame is unvoiced
+	/// Returns true if the frame is unvoiced
 	///
-    bool unvoiced(float pot, float r1norm, float rmaxnorm) const;
+    bool unvoiced(float pot, float r1norm, float rmaxnorm, int zeros) const;
+
+    int compute_zcr(std::vector<float> &x, unsigned int N, float fm) const;
 
 
   public:
-    PitchAnalyzer(	unsigned int fLen,			///< Frame length in samples
-					unsigned int sFreq,			///< Sampling rate in Hertzs
-					Window w=PitchAnalyzer::HAMMING,	///< Window type
-					float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
-					float max_F0 = MAX_F0		///< Pitch range should be restricted to be below this value
-				 )
-	{
+  /*
+    PitchAnalyzer(unsigned int fLen,			///< Frame length in samples
+					        unsigned int sFreq,			///< Sampling rate in Hertzs
+					        Window w=PitchAnalyzer::HAMMING,	///< Window type
+					        float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
+					        float max_F0 = MAX_F0)		///< Pitch range should be restricted to be below this value			 
+	  {
       frameLen = fLen;
       samplingFreq = sFreq;
       set_f0_range(min_F0, max_F0);
       set_window(w);
+      pot_ = -47.0F;
+      r1norm_ = 0.8F;
+      rmaxnorm_ = 0.1F;
+      zeros_ = 1448;
     }
+    */
+    PitchAnalyzer(float probpoth, float probpotl, float probzeros, float probr1normh, float probr1norml, float probrmaxnormh, float probrmaxnorml, float probmin, float thpoth, float thpotl, float thzeros, float thr1h, float thr1l, float thrmaxh, float thrmaxl,
+                  unsigned int fLen,			///< Frame length in samples
+					        unsigned int sFreq,			///< Sampling rate in Hertzs
+					        Window w=PitchAnalyzer::HAMMING,	///< Window type
+					        float min_F0 = MIN_F0,		///< Pitch range should be restricted to be above this value
+					        float max_F0 = MAX_F0)		///< Pitch range should be restricted to be below this value			 
+	  {
+      frameLen = fLen;
+      samplingFreq = sFreq;
+      set_f0_range(min_F0, max_F0);
+      set_window(w);
+      probpoth_ = probpoth;
+      probpotl_ = probpotl;
+      probzeros_ = probzeros;
+      probr1normh_ = probr1normh;
+      probr1norml_ = probr1norml;
+      probrmaxnormh_ = probrmaxnormh;
+      probrmaxnorml_ = probrmaxnorml;
+      probmin_ = probmin;
+      thpoth_ = thpoth;
+      thpotl_ = thpotl;
+      thzeros_ = thzeros;
+      thr1h_ = thr1h;
+      thr1l_ = thr1l;
+      thrmaxh_ = thrmaxh;
+      thrmaxl_ = thrmaxl;
+    }
+
 
 	///
     /// Operator (): computes the pitch for the given vector x

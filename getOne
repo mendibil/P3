@@ -1,0 +1,1 @@
+bin/get_pitch pitch_db/train/rl002.wav pitch_db/train/rl002.f0 47 0.8 0.00 1448
