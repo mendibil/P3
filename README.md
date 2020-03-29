@@ -347,7 +347,6 @@ Ejercicios de ampliación
 
   ```
   
-  Para el postprocesado hemos usado un filtro de mediana para así evitar el mayor numero de errores groseros como pueden ser la detección de un múltiplo o de un submúltiplo de la frecuencia real. Hemos analizado los resultados para longitudes del filtro (longitud 3, 5, 7, y sin filtro) y el que nos da un mejor resultado es el filtro de mediana de tres muestras.
   
   A continuación mostramos una comparación de la detección de nuestro sistema usando el filtro de mediana de tres muestras y sin usarlo, sobre un fichero de audio de la *database*:
   
