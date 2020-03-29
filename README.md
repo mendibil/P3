@@ -210,7 +210,7 @@ Ejercicios básicos
   267/7045 (3.79 %)   | 270/4155 (6.50 %)    | 53/3885 (1.36 %)    | 2.68 %               | **92.06 %**
   
   
-  <img src="img/P3-resultat.png" align="center">
+  <img src="img/P3-resultat.png" align="center" width = "460">
   
 
    * **Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará el uso de alternativas de mayor calidad (particularmente Python).**
@@ -255,20 +255,12 @@ Ejercicios de ampliación
   ### COMPLETAR A FULL AMB TOT LO QUE DEMANA I ERRORS que hem comés
   
   
-  ### ALBINO: Toda experimentación está bien, y será recompensada, pero, si es fallida, más se recompensará el documentarlo. Al final, lo que más contará será el resultado obtenido (pero descartar vías fallidas puede tener premio).
-  
-  
   ### Técnica de preprocesado: *center clipping*
   
   Hemos optado por el _**center clipping**_ para realizar el preprocesado de la señal ya que es una técnica simple pero a la vez muy efectiva. Es un proceso no lineal que conserva la estructura periódica de la señal a la vez que intensifica la estructura armónica y reduce el ruido.
   
   Para optimizarlo hemos establecido un offset para las muestras positivas y otro para las negativas. El valor de este offset es el resutado de multiplicar la potencia media de todo el fichero de audio por un porcentaje. Este porcentaje es decisivo para obtener un buen resultado y por eso los hemos utilizado junto a la librería `docopt_cpp` para iterar diferentes posibilidades así pudiendo obtener los valores óptimos.
   ### Acabar d'explicar i posar algun exemple gràfic que no sigui codi, what com que grafic a que et refereixes
-  
-  
-  ### Técnica de preprocesado: Filtro paso banda, ho treuria pq lo que tenim es lo que vam trobar que no hem provat massa
-  
-  También intentamos aplicar un filtro paso banda, pero nos dio un resultado peor y decidimos dejar de lado esta opción.
   
   
   ### Técnica de postprocesado: filtro de mediana
