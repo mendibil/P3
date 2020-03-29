@@ -127,50 +127,44 @@ Ejercicios básicos
    
    Así pues, nuestra regla de decisión queda de la siguiente manera:
    
-   ```cpp
-   bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, int zeros) const {    
+ ```cpp
+ bool PitchAnalyzer::unvoiced(float pot, float r1norm, float rmaxnorm, int zeros) const {    
    
    float probveu = 0.0;
-    
-   //*** PRIMER PARAMETRO: POTENCIA ***/
-   if(pot > -thpoth_){
-     probveu = probpoth_;
-   }
-   else if (pot <-thpotl_){
-     probveu = probpotl_;
-   } else {
-     probveu = probpotl_ + (probpoth_ - probpotl_) * (pot + thpotl_) / (-thpoth_ + thpotl_);
-    }
-    
-    //*** SEGUNDO PARAMETRO: CRUCES POR CERO ***/
-    if(zeros > thzeros_){
+
+   //Power
+    if(pot > -thpoth_)
+      probveu = probpoth_;
+    else if(pot < -thpotl_)
+      probveu = probpotl_;
+    else
+      probveu = probpotl_ + (probpoth_ - probpotl_) * (pot + thpotl_) / (-thpoth_ + thpotl_);
+
+    //ZCR
+    if(zeros > thzeros_)
       probveu *= probzeros_;
-    } 
-    
-    //*** TERCER PARAMETRO: R1NORM ***/
-    if(r1norm > thr1h_){
+
+    //r1norm
+    if(r1norm > thr1h_)
       probveu *= probr1normh_;
-    }
-    else if (r1norm <thr1l_){
+    else if (r1norm < thr1l_)
       probveu *= probr1norml_;
-    } else {
+    else
       probveu *= probr1norml_+ (probr1normh_ - probr1norml_) * (r1norm - thr1l_) / (thr1h_ - thr1l_);
-    }
-    
-    //*** CUARTO PARAMETRO: RMAXNORM ***/
-    if(rmaxnorm > thrmaxh_){
+
+    //rmaxnorm
+    if(rmaxnorm > thrmaxh_)
       probveu *= probrmaxnormh_;
-    }
-    else if (rmaxnorm <thrmaxl_){
+    else if(rmaxnorm <thrmaxl_)
       probveu *= probrmaxnorml_;
-    } else {
+    else
       probveu *= probrmaxnorml_ + (probrmaxnormh_ - probrmaxnorml_) * (rmaxnorm - thrmaxl_) / (thrmaxh_- thrmaxl_);
-    }
-    
-    //*** DECISION: SI LAS PONDERACIONES SUPERAN UN MINIMO, SE DETERMINA VOICED, Y VICEVERSA ***/
+
+    //Decision
     if(probveu >= probmin_) return false;
     else return true;
-    ```
+  }
+```
     
     Esta regla de decisión enseguida nos dio muy buenos resultados sin haber optimizado nada. El problema de esta regla de decisión es que tiene tantos parámetros (un total de 17 parámetros) que optimizarlos es muy complicado. Más adelante explicaremos cómo los hemos optimizado mediante un algoritmo de _Particle swarm optimization_ (PSO).
 
@@ -290,10 +284,68 @@ Ejercicios de ampliación
   
   Hemos optado por el _**center clipping**_ para realizar el preprocesado de la señal ya que es una técnica simple pero a la vez muy efectiva. Es un proceso no lineal que conserva la estructura periódica de la señal a la vez que intensifica la estructura armónica y reduce el ruido.
   
-  Para optimizarlo hemos establecido un offset para las muestras positivas y otro para las negativas. El valor de este offset es el resutado de multiplicar la potencia media de todo el fichero de audio por un porcentaje. Este porcentaje es decisivo para obtener un buen resultado y por eso los hemos utilizado junto a la librería `docopt_cpp` para iterar diferentes posibilidades así pudiendo obtener los valores óptimos.
+  Para optimizarlo hemos establecido un offset para las muestras positivas y otro para las negativas. El valor de este offset es el resutado de multiplicar la potencia media de todo el fichero de audio por un porcentaje. Este porcentaje es decisivo para obtener un buen resultado y por eso los hemos utilizado junto a la librería `docopt_cpp` para iterar diferentes posibilidades así pudiendo obtener los valores óptimos. Aunque no es lo habitual, optimizando los valores hemos llegado a thresholds diferentes para la parte positiva y para la parte negativa. También provamos de implementar la versión sin _offset_ pero los resultados no eran tan buenos:
+  
+  ```cpp
+  /******************* CENTRAL CLIPPING *******************/
+  /****** Calcul del threshhold de veu a partir de la potencia mitja ******/
+  float thpos, thneg = 0.0;
+  float potmitja = 0.0;
+  for (unsigned int i = 0; i < x.size(); i++)
+  {
+    potmitja += fabs(x[i]) * fabs(x[i]);
+  }
+  potmitja = (1.0F / x.size()) * potmitja;
+  
+  thpos = potmitja * cthpos_;
+  thneg = potmitja * cthpos_;
+
+
+  /****** Manera 1: sense offset: Descartat ******/ 
+  //  for(int i=0; i<x.size(); i++){
+  //    if(x[i]>-th && x[i]<th){
+  //      
+  //     x[i] = 0;
+  //    } else {
+  //      cout << "Valor fora de threshold: \t" << x[i] << '\n' ;
+  //    }
+  //  }
+
+  /****** Manera 2: amb offset ******/
+  for(int i=0; i<x.size(); i++){
+    if(x[i]>thpos){
+      x[i] = x[i] -thpos;
+    } else if (x[i] < -thneg){
+      x[i] = x[i] + thneg;
+    } else {
+      x[i] = 0;
+    }
+  }
+  ```
   
   
   ### Técnica de postprocesado: filtro de mediana
+  
+  Para el postprocesado hemos usado un filtro de mediana para así evitar el mayor numero de errores groseros como pueden ser la detección de un múltiplo o de un submúltiplo de la frecuencia real. Hemos analizado los resultados para longitudes del filtro (longitud 3, 5, 7, y sin filtro) y el que nos da un mejor resultado es el filtro de mediana de tres muestras.
+  
+  ```cpp
+  // ****************** MEDIAN FILTER ******************/
+  unsigned int window = 3;
+  for(int i=1; i<f0.size()-1; i++){ 
+    // Recorrem tot el vector de aproximacions de pitch
+    // excepte el primer i l'ultim valor perque el filtro
+    // de mediana necessita els neighbours
+
+    // Creem un vector de 3 elements i l'ordenem
+    float sortedf0[] = {f0[i-1], f0[i], f0[i+1] };
+    std::sort(sortedf0, sortedf0 + window);
+
+    // Assignem al valor del element f0[i] el 
+    // valor del mig dels elements ordenats
+    f0[i] = sortedf0[1];
+  }
+
+  ```
   
   Para el postprocesado hemos usado un filtro de mediana para así evitar el mayor numero de errores groseros como pueden ser la detección de un múltiplo o de un submúltiplo de la frecuencia real. Hemos analizado los resultados para longitudes del filtro (longitud 3, 5, 7, y sin filtro) y el que nos da un mejor resultado es el filtro de mediana de tres muestras.
   
