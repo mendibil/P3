@@ -36,52 +36,52 @@ Ejercicios básicos
 
    * **Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la autocorrelación. Inserte a continuación el código correspondiente.**
    
-     ```cpp
-     //Limits reals que imposarem a l'hora de decidir el pitch
-     float maxf0_real = 340; //Hi ha alguns de mes de 340 Hz pero dona millor resultat aixi
-     float minf0_real = 60;
-     unsigned int nmin_real = (unsigned int) samplingFreq / maxf0_real;
-     unsigned int nmax_real = (unsigned int) samplingFreq / minf0_real;
+	     ```cpp
+	     //Limits reals que imposarem a l'hora de decidir el pitch
+	     float maxf0_real = 340; //Hi ha alguns de mes de 340 Hz pero dona millor resultat aixi
+	     float minf0_real = 60;
+	     unsigned int nmin_real = (unsigned int) samplingFreq / maxf0_real;
+	     unsigned int nmax_real = (unsigned int) samplingFreq / minf0_real;
 
-     vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+	     vector<float>::const_iterator iR = r.begin(), iRMax = iR;
 
-     iR += npitch_min;
-     iRMax = iR;
+	     iR += npitch_min;
+	     iRMax = iR;
 
-     /// In either case, the lag should not exceed that of the minimum value of the pitch
-     while(iR != r.end() && (iR - r.begin()) < npitch_max) {
-       if(*iR > *iRMax)
-         iRMax = iR;
-       ++iR;
-     }
-     unsigned int lag = iRMax - r.begin();
+	     /// In either case, the lag should not exceed that of the minimum value of the pitch
+	     while(iR != r.end() && (iR - r.begin()) < npitch_max) {
+	       if(*iR > *iRMax)
+		 iRMax = iR;
+	       ++iR;
+	     }
+	     unsigned int lag = iRMax - r.begin();
 
-     //Ara, si el lag calculat es correspon amb un pitch no coherent (fora del rang f0_real)
-     //retornarem f0 = 0 Hz, com si s'hagues interpretat com unvoiced.
-     //Millora el resultat perquè és una forma de "trobar segments unvoiced",
-     //que no ens aconsegueix detectar la funció unvoiced() a partir
-     //dels paràmetres del frame.
-     //Descriminem segons la detecció de pitch utilitzant l'autocorrelació
-     if(lag < nmin_real || nmax_real < lag)
-       return 0;
+	     //Ara, si el lag calculat es correspon amb un pitch no coherent (fora del rang f0_real)
+	     //retornarem f0 = 0 Hz, com si s'hagues interpretat com unvoiced.
+	     //Millora el resultat perquè és una forma de "trobar segments unvoiced",
+	     //que no ens aconsegueix detectar la funció unvoiced() a partir
+	     //dels paràmetres del frame.
+	     //Descriminem segons la detecció de pitch utilitzant l'autocorrelació
+	     if(lag < nmin_real || nmax_real < lag)
+	       return 0;
 
 
    * **Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.**
    
    En un primer momento nuestra regla de decisión consistía en pasar por una serie de comprobaciones de los valores de potencia, correlaciónes y cruces por cero. Si estos valores estaban a un lado de un umbral determinado, se decidía _voiced_, y si estaban al otro lado, se decidía _unvoiced_. Un ejemplo de parte de este primer enfoque a continuación:
    
-   ```cpp
-   if(
-        pot       < -47.0                     || 
-        r1norm    < 0.66                      || 
-        rmaxnorm  < 0.30                      ||
-        zeros     > 2040                      ||
-       (r1norm    < 0.94 && rmaxnorm < 0.42)) {
-      	return true;
-    } else {
-      return false;
-    }
-    ```
+	   ```cpp
+	   if(
+		pot       < -47.0                     || 
+		r1norm    < 0.66                      || 
+		rmaxnorm  < 0.30                      ||
+		zeros     > 2040                      ||
+	       (r1norm    < 0.94 && rmaxnorm < 0.42)) {
+		return true;
+	    } else {
+	      return false;
+	    }
+	    ```
     
     En esta primera versión, los umbrales escogidos para cada condición eran fruto de experimentar con diferentes valores que tubieran sentido y coherencia con lo que veíamos que pasaba en Wavesurfer. No obstante, se nos ocurrió implementar un código extra que fuera capaz de encontrar zonas donde solo existían segmentos _voiced_ o _unvoiced_ para así poder minimizar el error de decisión. Esta idea parecía buena pero era difícil de llevar a cabo. Después de muchos intentos obtuvimos un seguido de condiciones (muchas) que nos llevaban a un mejor resultado. El problema de este concepto es que era muy difícil de mejorar y añadir más y más condiciones conllevaba más complejidad inecesaria que mejores resultados:
    
@@ -203,14 +203,14 @@ Ejercicios básicos
 
   * **Optimice los parámetros de su sistema de detección de pitch e inserte una tabla con las tasas de error y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos `pitch_db/train`..**
   
-  Optimizando todos los parámetros, conseguimos el siguiente resultado:
+    Optimizando todos los parámetros, conseguimos el siguiente resultado:
   
-  Unvoiced as voiced  |  Voiced as unvoiced  | Gross voiced errors |  MSE of fine errors  |  TOTAL
-  --------------------|----------------------|---------------------|----------------------|---------------
-  267/7045 (3.79 %)   | 270/4155 (6.50 %)    | 53/3885 (1.36 %)    | 2.68 %               | **92.06 %**
+    Unvoiced as voiced  |  Voiced as unvoiced  | Gross voiced errors |  MSE of fine errors  |  TOTAL
+    --------------------|----------------------|---------------------|----------------------|---------------
+    267/7045 (3.79 %)   | 270/4155 (6.50 %)    | 53/3885 (1.36 %)    | 2.68 %               | **92.06 %**
   
   
-  <img src="img/P3-resultat.png" align="center" width = "460">
+    <img src="img/P3-resultat.png" align="center" width = "460">
   
 
    * **Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará el uso de alternativas de mayor calidad (particularmente Python).**
@@ -231,7 +231,7 @@ Ejercicios de ampliación
     
     A continuación se muestra el mensaje de ayuda de nuestro docopt, que incluye 17 parámetros de entrada que posteriormente optimizaremos algorítmicamente.
     
-    ### AL ACABAR QUAN DIAZ EL MODIFIQUI, posar parametres a arguments, no a opciones pq lletres -a -b-... no serveixen
+    ### AL ACABAR 
     
   <img src="img/P3-mensaje-de-ayuda.png" align="center">
 
