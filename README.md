@@ -359,10 +359,15 @@ Ejercicios de ampliación
   
   Recorrerlos con varios _for_ con algunos valores escogidos a priori no funcionaría en este caso ya que tenemos un espacio de parámetros demasiado grande y rápidamente aumentaría el coste computacional (solamente con probar dos valores distintos de cada parámetro, se tendrían que hacer 131072 ejecuciones, cosa que sería un tiempo eterno y que ni siquiera nos asegura que los valores escogidos a priori sean óptimos).
   
-  Sin embargo, siguiendo la recomendación de nuestro profesor, nos decantamos por optimizar los parámetros mediante un algoritmo de Particle Swarp Optimization
+  Sin embargo, siguiendo la recomendación de nuestro profesor, nos decantamos por optimizar los parámetros mediante un algoritmo de Particle Swarp Optimization.
   
-  
-  ![](PSO-animation.gif)
+  El algoritmo PSO está muy bien estudiado y afortunadamente pudimos encontrar una librería en python que conseguimos adaptar a nuestras necesidades (a pesar de no tener ni idea de programación en python).
+
+Este algoritmo trabaja con una población de soluciones candidatas, llamadas partículas. Estas partículas se van moviendo al azar por el espacio de parámetros de manera que el movimiento de cada partícula está influenciado por el mejor resultado obtenido por ellas mismas y por las demás partículas.
+
+De esta manera, al cabo de unas cuantas iteraciones, todas las partículas acabarán convergiendo alrededor de un mismo punto, que bien puede ser el óptimo global del problema o, muy probablemente, un óptimo local (que puede ser suficientemente bueno o no dependiendo de la suerte que tengamos). En cada ejecución de este algoritmo, debido a su naturaleza aleatoria, se conseguirá un punto óptimo distinto.
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/ParticleSwarmArrowsAnimation.gif" align="center" >
    
 
 Evaluación *ciega* del detector
