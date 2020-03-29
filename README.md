@@ -83,7 +83,7 @@ Ejercicios básicos
     }
     ```
     
-    En esta primera versión, los umbrales escogidos para cada condición eran fruto de experimentar con diferentes valores que tubieran sentido y coherencia con lo que veíamos que pasaba en Wavesurfer. No obstante, se nos ocurrió implementar un código extra que fuera capaz de encontrar zonas donde solo existían segmentos _voiced_ o _unvoiced_ para así poder minimizar el error de decisión. Esta idea parecía buena pero era difícil de llevar a cabo. Después de muchos intentos obtuvimos un seguido de condiciones (muchas) que nos llevaban a un mejor resultado. El problema de este concepto es que era muy difícil de mejorar y añadir más y más condiciones conllevaba más complejidad inecesaria que mejores resultados:
+    En esta primera versión, los umbrales escogidos para cada condición eran fruto de experimentar con diferentes valores que tubieran sentido y coherencia con lo que veíamos que pasaba en Wavesurfer. No obstante, se nos ocurrió implementar un código extra que fuera capaz de encontrar zonas donde solo existían segmentos _voiced_ o _unvoiced_ para así poder minimizar el error de decisión. Esta idea parecía buena pero era difícil de llevar a cabo. Después de muchos intentos obtuvimos un seguido de condiciones (muchas) que nos llevaban a un mejor resultado. El problema de este concepto es que era muy difícil de mejorar y añadir más y más condiciones conllevaba más complejidad innecesaria que mejores resultados:
    
    ```cpp
     //Totalment Unvoiced
@@ -305,7 +305,12 @@ Ejercicios de ampliación
   
   Gracias al docopt podemos acceder a los 17 parámetros de nuestro sistema desde el terminal, cosa que nos permitirá optimizarlos ejecutando el programa para distintos valores de estos parámetros.
   
-  Recorrerlos con varios _for_ con valores a priori no funcionaría en este caso ya que tenemos un espacio 
+  Recorrerlos con varios _for_ con algunos valores escogidos a priori no funcionaría en este caso ya que tenemos un espacio de parámetros demasiado grande y rápidamente aumentaría el coste computacional (solamente con probar dos valores distintos de cada parámetro, se tendrían que hacer 131072 ejecuciones, cosa que sería un tiempo eterno y que ni siquiera nos asegura que los valores escogidos a priori sean óptimos).
+  
+  Sin embargo, siguiendo la recomendación de nuestro profesor, nos decantamos por optimizar los parámetros mediante un algoritmo de Particle Swarp Optimization
+  
+  
+  ![](PSO-animation.gif)
    
 
 Evaluación *ciega* del detector
