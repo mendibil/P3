@@ -220,7 +220,7 @@ Ejercicios básicos
    
    En este caso también hemos vuelto a decantarnos por la librería **matplotlib** ya que obtenemos una gráfica que ofrece un resultado visual muy claro: los puntos azules y más grandes se corresponden con el pitch de referencia, y los puntos rojos y más pequeños son el resultado de nuestra estimación de pitch. De esta manera podemos ver que en los casos donde dos puntos estan superpuestos la estimación ha sido totalmente efectiva. En general, el resultado es bastante acertado:
    
-     <img src="img/grafic-final.png" align="center" width = "600">
+     <img src="img/grafic-final.png" align="center" width = "800">
    
 
 Ejercicios de ampliación
