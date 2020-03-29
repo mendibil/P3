@@ -166,7 +166,7 @@ Ejercicios básicos
   }
 ```
     
-    Esta regla de decisión enseguida nos dio muy buenos resultados sin haber optimizado nada. El problema de esta regla de decisión es que tiene tantos parámetros (un total de 17 parámetros) que optimizarlos es muy complicado. Más adelante explicaremos cómo los hemos optimizado mediante un algoritmo de _Particle swarm optimization_ (PSO).
+   Esta regla de decisión enseguida nos dio muy buenos resultados sin haber optimizado nada. El problema de esta regla de decisión es que tiene tantos parámetros (un total de 17 parámetros) que optimizarlos es muy complicado. Más adelante explicaremos cómo los hemos optimizado mediante un algoritmo de _Particle swarm optimization_ (PSO).
 
 
 - **Una vez completados los puntos anteriores, dispondrá de una primera versión del detector de pitch. El resto del trabajo consiste, básicamente, en obtener las mejores prestaciones posibles con él.**
@@ -362,11 +362,11 @@ Ejercicios de ampliación
   
   El algoritmo PSO está muy bien estudiado y afortunadamente pudimos encontrar una librería en python que conseguimos adaptar a nuestras necesidades (a pesar de no tener ni idea de programación en python).
 
-Este algoritmo trabaja con una población de soluciones candidatas, llamadas partículas. Estas partículas se van moviendo al azar por el espacio de parámetros de manera que el movimiento de cada partícula está influenciado por el mejor resultado obtenido por ellas mismas y por las demás partículas.
+  Este algoritmo trabaja con una población de soluciones candidatas, llamadas partículas. Estas partículas se van moviendo al azar por el espacio de parámetros de manera que el movimiento de cada partícula está influenciado por el mejor resultado obtenido por ellas mismas y por las demás partículas.
 
-De esta manera, al cabo de unas cuantas iteraciones, todas las partículas acabarán convergiendo alrededor de un mismo punto, que bien puede ser el óptimo global del problema o, muy probablemente, un óptimo local (que puede ser suficientemente bueno o no dependiendo de la suerte que tengamos). En cada ejecución de este algoritmo, debido a su naturaleza aleatoria, se conseguirá un punto óptimo distinto.
+  De esta manera, al cabo de unas cuantas iteraciones, todas las partículas acabarán convergiendo alrededor de un mismo punto, que bien puede ser el óptimo global del problema o, muy probablemente, un óptimo local (que puede ser suficientemente bueno o no dependiendo de la suerte que tengamos). En cada ejecución de este algoritmo, debido a su naturaleza aleatoria, se conseguirá un punto óptimo distinto.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/ParticleSwarmArrowsAnimation.gif" align="center" >
+   <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/ParticleSwarmArrowsAnimation.gif" align="center">
    
 
 Evaluación *ciega* del detector
