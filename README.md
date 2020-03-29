@@ -199,7 +199,7 @@ Ejercicios básicos
 	  - **Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica ilustrativa del resultado de ambos detectores.**
 	  
 	  
-	  <img src="img/P3-wavesurferVSus.png" align="center">
+	    <img src="img/P3-wavesurferVSus.png" align="center">
 	  
 	  
 	  Vemos que, en general, nos sale un resultado bastante similar al que da Wavesurfer, con algunos puntos en el que no acertamos del todo. Veremos si optimizando los parámetros conseguimos mejorar este resultado que, de momento, tenemos un acierto que ronda el 91%.
@@ -220,7 +220,7 @@ Ejercicios básicos
    
    En este caso también hemos vuelto a decantarnos por la librería **matplotlib** ya que obtenemos una gráfica que ofrece un resultado visual muy claro: los puntos azules y más grandes se corresponden con el pitch de referencia, y los puntos rojos y más pequeños son el resultado de nuestra estimación de pitch. De esta manera podemos ver que en los casos donde dos puntos estan superpuestos la estimación ha sido totalmente efectiva. En general, el resultado es bastante acertado:
    
-   <img src="img/grafic-final.png" align="center" width = "640">
+       <img src="img/grafic-final.png" align="center" width = "600">
    
 
 Ejercicios de ampliación
@@ -232,7 +232,7 @@ Ejercicios de ampliación
 
   * **Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización con los argumentos añadidos.**
     
-    A continuación se muestra el mensaje de ayuda de nuestro docopt, que incluye 17 parámetros de entrada que posteriormente optimizaremos algorítmicamente.
+    A continuación se muestra el mensaje de ayuda de nuestro docopt, que incluye 17 parámetros de entrada que posteriormente optimizaremos algorítmicamente usando PSO.
     
     ```
     get_pitch - Pitch Detector 
@@ -286,15 +286,11 @@ Ejercicios de ampliación
   **También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de la longitud del filtro.**
   
   
-  ### COMPLETAR A FULL AMB TOT LO QUE DEMANA I ERRORS que hem comés
-  
-  
   ### Técnica de preprocesado: *center clipping*
   
   Hemos optado por el _**center clipping**_ para realizar el preprocesado de la señal ya que es una técnica simple pero a la vez muy efectiva. Es un proceso no lineal que conserva la estructura periódica de la señal a la vez que intensifica la estructura armónica y reduce el ruido.
   
   Para optimizarlo hemos establecido un offset para las muestras positivas y otro para las negativas. El valor de este offset es el resutado de multiplicar la potencia media de todo el fichero de audio por un porcentaje. Este porcentaje es decisivo para obtener un buen resultado y por eso los hemos utilizado junto a la librería `docopt_cpp` para iterar diferentes posibilidades así pudiendo obtener los valores óptimos.
-  ### Acabar d'explicar i posar algun exemple gràfic que no sigui codi, what com que grafic a que et refereixes
   
   
   ### Técnica de postprocesado: filtro de mediana
@@ -315,9 +311,9 @@ Ejercicios de ampliación
 Evaluación *ciega* del detector
 -------------------------------
 
-Antes de realizar el *pull request* debe asegurarse de que su repositorio contiene los ficheros necesarios
-para compilar los programas correctamente ejecutando `make release`.
+**Antes de realizar el *pull request* debe asegurarse de que su repositorio contiene los ficheros necesarios
+para compilar los programas correctamente ejecutando `make release`.**
 
-Con los ejecutables construidos de esta manera, los profesores de la asignatura procederán a evaluar el
+**Con los ejecutables construidos de esta manera, los profesores de la asignatura procederán a evaluar el
 detector con la parte de test de la base de datos (desconocida para los alumnos). Una parte importante de
-la nota de la práctica recaerá en el resultado de esta evaluación.
+la nota de la práctica recaerá en el resultado de esta evaluación.**
