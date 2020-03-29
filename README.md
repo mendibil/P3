@@ -123,7 +123,7 @@ Ejercicios básicos
    
    Todo esto viene ilustrado en la siguiente imagen:
    
-   <img src="img/P3-ilustracio-probabilitats.png" align="center">
+   <img src="img/P3-ilustracio-probabilitats.jpeg" align="center">
    
    Así pues, nuestra regla de decisión queda de la siguiente manera:
    
