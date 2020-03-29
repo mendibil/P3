@@ -36,52 +36,52 @@ Ejercicios básicos
 
    * **Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la autocorrelación. Inserte a continuación el código correspondiente.**
    
-	     ```cpp
-	     //Limits reals que imposarem a l'hora de decidir el pitch
-	     float maxf0_real = 340; //Hi ha alguns de mes de 340 Hz pero dona millor resultat aixi
-	     float minf0_real = 60;
-	     unsigned int nmin_real = (unsigned int) samplingFreq / maxf0_real;
-	     unsigned int nmax_real = (unsigned int) samplingFreq / minf0_real;
+     ```cpp
+     //Limits reals que imposarem a l'hora de decidir el pitch
+     float maxf0_real = 340; //Hi ha alguns de mes de 340 Hz pero dona millor resultat aixi
+     float minf0_real = 60;
+     unsigned int nmin_real = (unsigned int) samplingFreq / maxf0_real;
+     unsigned int nmax_real = (unsigned int) samplingFreq / minf0_real;
 
-	     vector<float>::const_iterator iR = r.begin(), iRMax = iR;
+     vector<float>::const_iterator iR = r.begin(), iRMax = iR;
 
-	     iR += npitch_min;
-	     iRMax = iR;
+     iR += npitch_min;
+     iRMax = iR;
 
-	     /// In either case, the lag should not exceed that of the minimum value of the pitch
-	     while(iR != r.end() && (iR - r.begin()) < npitch_max) {
-	       if(*iR > *iRMax)
-		 iRMax = iR;
-	       ++iR;
-	     }
-	     unsigned int lag = iRMax - r.begin();
+     /// In either case, the lag should not exceed that of the minimum value of the pitch
+     while(iR != r.end() && (iR - r.begin()) < npitch_max) {
+       if(*iR > *iRMax)
+	 iRMax = iR;
+       ++iR;
+     }
+     unsigned int lag = iRMax - r.begin();
 
-	     //Ara, si el lag calculat es correspon amb un pitch no coherent (fora del rang f0_real)
-	     //retornarem f0 = 0 Hz, com si s'hagues interpretat com unvoiced.
-	     //Millora el resultat perquè és una forma de "trobar segments unvoiced",
-	     //que no ens aconsegueix detectar la funció unvoiced() a partir
-	     //dels paràmetres del frame.
-	     //Descriminem segons la detecció de pitch utilitzant l'autocorrelació
-	     if(lag < nmin_real || nmax_real < lag)
-	       return 0;
+     //Ara, si el lag calculat es correspon amb un pitch no coherent (fora del rang f0_real)
+     //retornarem f0 = 0 Hz, com si s'hagues interpretat com unvoiced.
+     //Millora el resultat perquè és una forma de "trobar segments unvoiced",
+     //que no ens aconsegueix detectar la funció unvoiced() a partir
+     //dels paràmetres del frame.
+     //Descriminem segons la detecció de pitch utilitzant l'autocorrelació
+     if(lag < nmin_real || nmax_real < lag)
+       return 0;
 
 
    * **Implemente la regla de decisión sonoro o sordo e inserte el código correspondiente.**
    
    En un primer momento nuestra regla de decisión consistía en pasar por una serie de comprobaciones de los valores de potencia, correlaciónes y cruces por cero. Si estos valores estaban a un lado de un umbral determinado, se decidía _voiced_, y si estaban al otro lado, se decidía _unvoiced_. Un ejemplo de parte de este primer enfoque a continuación:
    
-	   ```cpp
-	   if(
-		pot       < -47.0                     || 
-		r1norm    < 0.66                      || 
-		rmaxnorm  < 0.30                      ||
-		zeros     > 2040                      ||
-	       (r1norm    < 0.94 && rmaxnorm < 0.42)) {
-		return true;
-	    } else {
-	      return false;
-	    }
-	    ```
+   ```cpp
+   if(
+	pot       < -47.0                     || 
+	r1norm    < 0.66                      || 
+	rmaxnorm  < 0.30                      ||
+	zeros     > 2040                      ||
+       (r1norm    < 0.94 && rmaxnorm < 0.42)) {
+	return true;
+    } else {
+      return false;
+    }
+    ```
     
     En esta primera versión, los umbrales escogidos para cada condición eran fruto de experimentar con diferentes valores que tubieran sentido y coherencia con lo que veíamos que pasaba en Wavesurfer. No obstante, se nos ocurrió implementar un código extra que fuera capaz de encontrar zonas donde solo existían segmentos _voiced_ o _unvoiced_ para así poder minimizar el error de decisión. Esta idea parecía buena pero era difícil de llevar a cabo. Después de muchos intentos obtuvimos un seguido de condiciones (muchas) que nos llevaban a un mejor resultado. El problema de este concepto es que era muy difícil de mejorar y añadir más y más condiciones conllevaba más complejidad inecesaria que mejores resultados:
    
@@ -187,6 +187,7 @@ Ejercicios básicos
 	  
 	  En la gráfica siguiente, se muestran todos los parámetros mencionados junto al cálculo de pitch que hace Wavesurfer:
 	
+	
 	  <img src="img/P3-nomesWavesurfer.png" align="center">
 	  
 	  Observamos que la potencia por si sola no es un parámetro demasiado bueno para la finalidad que nos ocupa en esta práctica. Vemos algunas zonas en las que, a pesar de tener niveles de potencia relativamente altos, Wavesurfer no les da un valor alto de pitch.
@@ -197,7 +198,9 @@ Ejercicios básicos
 	  
 	  - **Use el detector de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare su resultado con el obtenido por la mejor versión de su propio sistema.  Inserte una gráfica ilustrativa del resultado de ambos detectores.**
 	  
+	  
 	  <img src="img/P3-wavesurferVSus.png" align="center">
+	  
 	  
 	  Vemos que, en general, nos sale un resultado bastante similar al que da Wavesurfer, con algunos puntos en el que no acertamos del todo. Veremos si optimizando los parámetros conseguimos mejorar este resultado que, de momento, tenemos un acierto que ronda el 91%.
 
@@ -215,9 +218,9 @@ Ejercicios básicos
 
    * **Inserte una gráfica en la que se vea con claridad el resultado de su detector de pitch junto al del detector de Wavesurfer. Aunque puede usarse Wavesurfer para obtener la representación, se valorará el uso de alternativas de mayor calidad (particularmente Python).**
    
-   En este caso también hemos vuelto a decantarnos por la librería **matplotlib** ya que obtenemos una gráfica que ofrece un resultado visual muy claro: los puntos azules y más grandes se corresponden con el pitch de referencia, y los puntos rojos y más pequeños son el resultado de nuestra estimación de pitch. De esta manera podemos ver que en los casos donde dos puntos estan superpuestos la estimación ha sido totalmente efectiva.
+   En este caso también hemos vuelto a decantarnos por la librería **matplotlib** ya que obtenemos una gráfica que ofrece un resultado visual muy claro: los puntos azules y más grandes se corresponden con el pitch de referencia, y los puntos rojos y más pequeños son el resultado de nuestra estimación de pitch. De esta manera podemos ver que en los casos donde dos puntos estan superpuestos la estimación ha sido totalmente efectiva. En general, el resultado es bastante acertado:
    
-   ### COMPLETAR AL ACABAR amb .f0ref que surti millor
+   <img src="img/grafic-final.png" align="center" width = "640">
    
 
 Ejercicios de ampliación
@@ -231,9 +234,40 @@ Ejercicios de ampliación
     
     A continuación se muestra el mensaje de ayuda de nuestro docopt, que incluye 17 parámetros de entrada que posteriormente optimizaremos algorítmicamente.
     
-    ### AL ACABAR 
-    
-  <img src="img/P3-mensaje-de-ayuda.png" align="center">
+    ```
+    get_pitch - Pitch Detector 
+    Usage:
+        get_pitch [options] <input-wav> <output-txt> [<probpoth_>] [<probpotl_>] [<probzeros_>] [<probr1normh_>] [<probr1norml_>]
+                                                     [<probrmaxnormh_>] [<probrmaxnorml_>] [<probmin_>] [<cthpos_>] [<cthneg_>]
+                                                     [<thpoth_>] [<thpotl_>] [<thzeros_>] [<thr1h_>] [<thr1l_>]
+                                                     [<thrmaxh_>] [<thrmaxl_>]
+        get_pitch (-h | --help)
+        get_pitch --version
+    Options:
+        -h, --help  Show this screen
+        --version   Show the version of the project
+    Arguments:
+        input-wav       Wave file with the audio signal
+        output-txt      Output file: ASCII file with the result of the detection:
+                            - One line per frame with the estimated f0
+                            - If considered unvoiced, f0 must be set to f0 = 0
+        probpoth_       Enter probpoth_
+        probpotl_       Enter probpotl_ 
+        probzeros_      Enter probzeros_
+        probr1normh_    Enter probr1normh_
+        probr1norml_    Enter probr1norml_
+        probrmaxnormh_  Enter probrmaxnormh_
+        probrmaxnorml_  Enter probrmaxnorml_
+        probmin_        Enter probmin_
+        cthpos_         Enter cthpos_
+        cthneg_         Enter cthneg_
+        thpoth_         Enter thpoth_
+        thpotl_         Enter thpotl_
+        thzeros_        Enter thzeros_
+        thr1h_          Enter thr1h_
+        thr1l_          Enter thr1l_
+        thrmaxh_        Enter thrmaxh_
+        thrmaxl_        Enter thrmaxl_
 
 - **Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de detección de pitch.**
 
